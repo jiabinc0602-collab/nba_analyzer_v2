@@ -15,4 +15,3 @@ A machine learning pipeline to identify statistical edges in NBA betting lines b
 * **Tools:** Jupyter Notebooks for analysis
 
 ## Setup
-*(Leave this blank for now, or just say "Coming Soon")*
