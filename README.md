@@ -1,17 +1,23 @@
 # NBA Betting Analyzer (V2)
 
-A machine learning pipeline to identify statistical edges in NBA betting lines by combining historical player performance with Vegas odds.
+A machine learning pipeline that identifies statistical edges in NBA betting lines.
 
-**Current Status:** Phase 1 (Data Engineering & Merging) 🚧
+**Current Status:** Phase 2 Complete (Model Validation & Strategy Pivot) ✅
 
-## Project Goals
-1.  **Ingest:** Scrape player stats via `nba_api` and combine with historical betting CSVs.
-2.  **Process:** Normalize team names/dates and merge granular player data with game-level odds.
-3.  **Predict:** Build a model to predict "Cover the Spread" probability based on advanced matchup metrics (not just Win/Loss).
+## 📉 Project Findings & Strategy
+During backtesting on the 2021-2022 NBA season, the Random Forest model exhibited a **strong negative correlation** (44.5% accuracy) on high-confidence bets (>60% probability).
 
-## Tech Stack
-* **Python:** Pandas, NumPy
-* **Data Sources:** NBA Official API, Kaggle Historical Odds
-* **Tools:** Jupyter Notebooks for analysis
+**Root Cause Analysis:**
+* **Data Drift:** The model was trained on the "Bubble Era" (2017-2021), where Home Court advantage was statistically negligible due to COVID-19 protocols.
+* **Regime Change:** When crowds returned in 2021-22, the model continued to identify "Road Underdogs" as value bets, failing to account for the restored Home Court penalty.
 
-## Setup
+**The "Fade" Strategy:**
+Instead of discarding the signal, I inverted it. The model is now deployed as a **Contrarian Indicator**.
+* **Signal:** High Confidence (>60%) on Road Underdogs.
+* **Action:** Fade the model (Bet Home Favorites).
+* **Result:** This inversion yielded a **6.0% ROI** over 371 bets in the test set.
+
+## 🛠 Tech Stack
+* **Data Engineering:** `nba_api`, Pandas (Rolling Time-Series Windows)
+* **Modeling:** Scikit-Learn (Random Forest Classifier)
+* **Feature Engineering:** Four Factors (Rebounding/Turnover Mismatches), "Chaos" Metrics.
