@@ -3,6 +3,7 @@
 > **⚠️ Project Status: Archived / Legacy**
 >
 > This project represents a completed research initiative into quantitative sports modeling. All development has moved to a new repository focused on a real-time, low-latency inference engine for live NBA game prediction.
+> Committed a lot ML mishaps in this project lmao
 
 ## 📋 Project Overview
 This repository hosts a machine learning pipeline designed to predict NBA game outcomes against the spread (ATS). Unlike traditional models that rely on team-level aggregates, this project implements an **"Active Roster"** approach. It dynamically calculates team strength based solely on the specific players active for a given match, effectively filtering out "noise" from injured or resting star players (often referred to as "Ghost Data").
